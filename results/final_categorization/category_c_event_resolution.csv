@@ -1,0 +1,7 @@
+Gene,Legacy_Category,New_5_Tier_Category,Event_Types,Regions,Reasoning
+Lrp8,Category_A,A1b_multi_region_same_event,"A3SS, SE","Hippocampus, Prefrontal, Striatum",Recurrent in 2 of 3 regions same direction
+Myo9b,Category_A,A1b_multi_region_same_event,"A3SS, RI, SE","Hippocampus, Prefrontal, Striatum",Recurrent in 2 of 3 regions same direction
+Neil2,Category_B,B_region_restricted,SE,Prefrontal,Strong event limited to one region
+Bcl2l11,Category_C,C1_region_opposite_same_event,RI,"Hippocampus, Prefrontal, Striatum",Opposite-direction regulation across regions
+Pts,Category_A,C2_gene_multi_event_mixed,"MXE, RI, SE","Hippocampus, Prefrontal, Striatum",Different event loci in same gene with mixed directions
+Unc13b,Category_B,C2_gene_multi_event_mixed,SE,"Hippocampus, Striatum",Different SE event loci (distinct exon coordinates) in same gene across regions

@@ -1,0 +1,7 @@
+gene,total_disease_associations,n_psych,psych_details
+Pts,289,6,Intellectual disability (score=0.46); bipolar disorder (score=0.09); depressive disorder (score=0.00); Anxiety (score=0.00); schizophrenia (score=0.00)
+Lrp8,296,8,schizophrenia (score=0.17); Cognitive impairment (score=0.02); depressive disorder (score=0.01); major depressive disorder (score=0.01); bipolar disorder (score=0.01)
+Myo9b,130,2,schizophrenia (score=0.02); autism (score=0.00)
+Neil2,124,4,hereditary attention deficit-hyperactivity disorder (score=0.04); attention deficit hyperactivity disorder (score=0.04); schizophrenia 15 (score=0.03); Anxiety (score=0.01)
+Unc13b,120,9,X-linked intellectual disability-macrocephaly-macroorchidism syndrome (score=0.04); X-linked intellectual disability - macrocephaly - macroorchidism (score=0.04); schizophrenia (score=0.03); bipolar disorder (score=0.01); Anxiety (score=0.01)
+Tox3,152,4,major depressive disorder (score=0.06); psychiatric disorder (score=0.00); Anxiety (score=0.00); Neurodevelopmental disorder (score=0.00)

@@ -1,0 +1,44 @@
+gtf: 8.189608812332153
+There are 55401 distinct gene ID in the gtf file
+There are 142604 distinct transcript ID in the gtf file
+There are 34279 one-transcript genes in the gtf file
+There are 843402 exons in the gtf file
+There are 26950 one-exon transcripts in the gtf file
+There are 21842 one-transcript genes with only one exon in the transcript
+Average number of transcripts per gene is 2.574033
+Average number of exons per transcript is 5.914294
+Average number of exons per transcript excluding one-exon tx is 7.059436
+Average number of gene per geneGroup is 7.464226
+statistic: 0.011741161346435547
+
+read outcome totals across all BAMs
+USED: 688076190
+NOT_PAIRED: 0
+NOT_NH_1: 160776536
+NOT_EXPECTED_CIGAR: 3208577
+NOT_EXPECTED_READ_LENGTH: 0
+NOT_EXPECTED_STRAND: 0
+EXON_NOT_MATCHED_TO_ANNOTATION: 15080588
+JUNCTION_NOT_MATCHED_TO_ANNOTATION: 758233
+CLIPPED: 103848475
+total: 971748599
+outcomes by BAM written to: /Volumes/Untitled/NeuroSplice/results/rmats_gse117357/striatum/tmp/2026-02-04-19_31_31_412645_read_outcomes_by_bam.txt
+
+novel: 397.54552388191223
+The splicing graph and candidate read have been saved into /Volumes/Untitled/NeuroSplice/results/rmats_gse117357/striatum/tmp/2026-02-04-19_31_31_412645_*.rmats
+save: 12.59837794303894
+loadsg: 0.18540215492248535
+
+==========
+Done processing each gene from dictionary to compile AS events
+Found 50268 exon skipping events
+Found 6016 exon MX events
+Found 9980 alt SS events
+There are 6261 alt 3 SS events and 3719 alt 5 SS events.
+Found 4276 RI events
+==========
+
+ase: 0.9571981430053711
+count: 11.556029796600342
+Processing count files.
+Done processing count files.

@@ -1,0 +1,7 @@
+gene,mm10_chr,mm10_start,mm10_end,hg38_chr,hg38_start,hg38_end,hg38_strand,liftover_status
+Lrp8,chr4,107850103,107850142,,,,,ERROR_400
+Myo9b,chr8,71340759,71340799,,,,,ERROR_400
+Neil2,chr14,63189107,63191858,,,,,ERROR_400
+Pts,chr9,50524722,50526949,,,,,ERROR_400
+Tox3,chr8,90270228,90270483,,,,,ERROR_400
+Unc13b,chr4,43169967,43178334,,,,,ERROR_400

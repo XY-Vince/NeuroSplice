@@ -1,0 +1,20 @@
+# Data and intermediates
+*.bam
+*.bai
+*.bed
+*.MATS.*.txt
+*.fq
+*.fastq
+*.fastq.gz
+data/metadata/GSE117357_summary_DO_NOT_USE_wrong_dataset.csv
+Output/
+results/salmon_quant/
+results/featurecounts/
+
+# Python
+*.pyc
+__pycache__/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store

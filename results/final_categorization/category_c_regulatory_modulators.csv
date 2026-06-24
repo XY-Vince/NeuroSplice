@@ -1,0 +1,4 @@
+Gene,EventType,Hippo_ΔΨ,PFC_ΔΨ,Stri_ΔΨ,Pattern
+Arid5a,A3SS,-0.112,0.169,0.155,Directional heterogeneity
+Bcl2l11,RI,0.114,-0.251,0.106,Directional heterogeneity
+Gm10419,SE,0.188,0.141,0.212,lincRNA/regulatory (excluded from Cat A)
