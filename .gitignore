@@ -18,3 +18,10 @@ __pycache__/
 
 # OS
 .DS_Store
+
+# rMATS intermediates (regenerable)
+results/rmats_gse117357/*/JC.raw.input.*.txt
+results/rmats_gse117357/*/JCEC.raw.input.*.txt
+results/rmats_gse117357/*/fromGTF*.txt
+results/rmats_gse117357/*/rmats.log
+results/rmats_gse117357/*/summary.txt

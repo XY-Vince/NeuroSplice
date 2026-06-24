@@ -8,7 +8,7 @@ To ensure reproducibility and prevent execution of deprecated logic, the scripts
 These are the ONLY scripts required to generate the final manuscript-facing results. They must be executed in this exact order:
 1. `58_deseq2_local_canonical.py` - Performs canonical DEG analysis using PyDESeq2 (`~Genotype`).
 2. `59_rmats_qc_and_candidates.py` - Performs rigorous rMATS QC, applies junction depth thresholds (median ≥ 10), and extracts candidate events.
-3. `51_final_categorization.py` - Categorizes the candidate events into the 5-tier schema (A1, A1b, B, C1, C2). *(Note: Currently being refactored to natively output the 5-tier labels).*
+3. `51_final_categorization.py` - Categorizes the candidate events into the 5-tier schema (A1, A1b, B, C1, C2). *(Note: Refactored to natively output the 5-tier labels).*
 
 ## 🟡 Upstream Preprocessing
 These scripts are responsible for downloading data and building the raw alignment/quantification matrices. They are generally not re-run unless starting from scratch.

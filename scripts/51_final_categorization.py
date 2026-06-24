@@ -28,8 +28,6 @@ import numpy as np
 # ============================================================
 # Constants & Defaults
 # ============================================================
-DEFAULT_DPSI_B1 = 0.30
-DEFAULT_DPSI_B2 = 0.20
 TECHNICAL_CONTROLS = ["Gm10419"]
 
 REQUIRED_COLUMNS = [
@@ -54,16 +52,12 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Canonical Candidate Categorization")
     parser.add_argument("--project-dir", required=True,
                         help="Path to NeuroSplice project root")
-    parser.add_argument("--dpsi-b1", type=float, default=DEFAULT_DPSI_B1,
-                        help="Min |ΔPSI| for Category B (1 tissue)")
-    parser.add_argument("--dpsi-b2", type=float, default=DEFAULT_DPSI_B2,
-                        help="Min |ΔPSI| for Category B (2 tissues)")
     return parser.parse_args()
 
 def setup_directories(project_dir):
-    qc_dir = os.path.join(project_dir, "results/rmats_gse117357_canonical/qc")
-    out_dir = os.path.join(project_dir, "results/rmats_gse117357_canonical/final_categorization")
-    log_dir = os.path.join(project_dir, "results/rmats_gse117357_canonical/logs")
+    qc_dir = os.path.join(project_dir, "results/rmats_gse117357/qc")
+    out_dir = os.path.join(project_dir, "results/rmats_gse117357/final_categorization")
+    log_dir = os.path.join(project_dir, "results/rmats_gse117357/logs")
     
     if not os.path.isdir(qc_dir):
         print(f"FATAL: QC directory not found at {qc_dir}", file=sys.stderr)
@@ -109,9 +103,9 @@ def construct_event_signature(r):
 # Core Logic
 # ============================================================
 
-def categorize_genes(df, dpsi_b1, dpsi_b2):
+def categorize_genes(df):
     """
-    Assigns each gene to a category (A1, A2, B, C, D) and builds a gene summary.
+    Assigns each gene to a category (A1_pan_region_same_event, A1b_multi_region_same_event, B_region_restricted, C1_region_opposite_same_event, C2_gene_multi_event_mixed, D_unclassified) and builds a gene summary.
     """
     # Only consider significant events for deciding categories A, B, C
     # Technical/supplemental logic happens globally
@@ -253,7 +247,7 @@ def main():
     df["technical_flag"] = df["geneSymbol"].isin(TECHNICAL_CONTROLS)
     
     # 3. Gene-level categorization
-    gene_summary_df, gene_cat_map = categorize_genes(df, args.dpsi_b1, args.dpsi_b2)
+    gene_summary_df, gene_cat_map = categorize_genes(df)
     
     # 4. Map category back to event-level
     df["final_category"] = df["geneSymbol"].map(gene_cat_map)
@@ -301,8 +295,6 @@ def main():
             "sha256": sha256_file(in_csv)
         },
         "thresholds": {
-            "dpsi_b1": args.dpsi_b1,
-            "dpsi_b2": args.dpsi_b2,
             "fdr_significant": "< 0.05",
             "strict_effect": "FDR < 0.05 and |ΔPSI| >= 0.05"
         },

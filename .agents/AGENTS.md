@@ -9,6 +9,16 @@ These rules apply specifically to the NeuroSplice Adgrl3 multi-omic analysis and
 4. **DESeq2 Design**: Formula must be `~Genotype`. DO NOT include a sex covariate as this metadata does not exist.
 5. **Namespaces**: Ensembl `GeneID` suffixes (e.g., `.5`) must be stripped before joining with rMATS `geneSymbol`.
 
+## Kill-Switches (Hard-Stop Conditions)
+1. **Metadata Contamination**: Use of `GSE117357_summary_DO_NOT_USE_wrong_dataset.csv`.
+2. **Fake Sex Covariates**: Including sex in the DESeq2 design.
+3. **Reversed Directionality**: WT and KO order reversed in ΔΨ calculation.
+4. **Namespace Collision**: Joining DEG and AS results without stripping `.version` Ensembl suffixes.
+
+## Key Thresholds
+- **Strict_effect**: Requires both FDR < 0.05 and an absolute inclusion difference |ΔΨ| ≥ threshold.
+- *Note: Script 59 currently uses |ΔΨ| ≥ 0.05 for Strict_effect, but the handoff documentation cites |ΔΨ| ≥ 0.10. Clarification is pending.*
+
 ## Schema
 When categorizing candidate events, strictly use this 5-tier classification scheme:
 1. **A1_pan_region_same_event**: Same event recurrent at FDR < 0.05 in all 3 tissues.
