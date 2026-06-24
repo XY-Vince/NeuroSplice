@@ -6,11 +6,12 @@
 # the rigorous QC outputs from script 59.
 #
 # Categories:
-#   A1: Same event recurrent at FDR < 0.05 in all 3 tissues
-#   A2: Same gene affected in all 3 tissues at distinct event loci
-#   B:  Gene restricted to 1-2 tissues with high |ΔPSI|
-#   C:  Directional heterogeneity across tissues
-#   D:  Technical/low-annotation flag (e.g. Gm10419)
+#   A1_pan_region_same_event: Same event recurrent at FDR < 0.05 in all 3 tissues
+#   A1b_multi_region_same_event: Same event recurrent in 2 of 3 tissues
+#   B_region_restricted: Event restricted to 1 tissue
+#   C1_region_opposite_same_event: Same event, opposite directions across tissues
+#   C2_gene_multi_event_mixed: Different events within one gene show mixed directions
+#   D_unclassified: Technical/low-annotation flag (e.g. Gm10419) or below thresholds
 # ============================================================
 
 import os
@@ -144,35 +145,42 @@ def categorize_genes(df, dpsi_b1, dpsi_b2):
         
         category = "None"
         
-        if tech_flag or (n_strict == 0 and n_sashimi == 0):
-            category = "D"
+        if tech_flag or (n_strict == 0 and n_sashimi == 0) or sig_group.empty:
+            category = "D_unclassified"
             event_pan_tissue = False
             gene_pan_tissue = False
         else:
-            # Check A1/A2/C
             event_pan_tissue = False
-            if not sig_group.empty:
-                for sig_str, event_grp in sig_group.groupby("event_signature"):
-                    if len(set(event_grp["region"])) == 3:
-                        event_pan_tissue = True
-                        break
-                        
             gene_pan_tissue = (n_regions == 3)
             
-            if dir_pattern == "mixed":
-                category = "C"
-            elif event_pan_tissue:
-                category = "A1"
-            elif gene_pan_tissue:
-                category = "A2"
+            is_c1 = False
+            max_event_regions = 0
+            
+            for sig_str, event_grp in sig_group.groupby("event_signature"):
+                # Check for C1 (opposite directions for same event)
+                dirs = set(event_grp["direction"].dropna()) - {"unknown", "no_difference"}
+                if len(dirs) == 2:
+                    is_c1 = True
+                
+                n_ev_regions = len(set(event_grp["region"]))
+                if n_ev_regions > max_event_regions:
+                    max_event_regions = n_ev_regions
+            
+            if max_event_regions == 3:
+                event_pan_tissue = True
+                
+            if is_c1:
+                category = "C1_region_opposite_same_event"
+            elif dir_pattern == "mixed":
+                category = "C2_gene_multi_event_mixed"
+            elif max_event_regions == 3:
+                category = "A1_pan_region_same_event"
+            elif max_event_regions == 2:
+                category = "A1b_multi_region_same_event"
+            elif max_event_regions == 1:
+                category = "B_region_restricted"
             else:
-                # B check
-                if n_regions == 1 and max_abs_dpsi >= dpsi_b1:
-                    category = "B"
-                elif n_regions == 2 and max_abs_dpsi >= dpsi_b2:
-                    category = "B"
-                else:
-                    category = "B_moderate"
+                category = "D_unclassified"
                     
         gene_to_cat[gene] = category
         
