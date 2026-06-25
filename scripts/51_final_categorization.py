@@ -107,7 +107,7 @@ def categorize_genes(df):
     """
     Assigns each gene to a category (A1_pan_region_same_event, A1b_multi_region_same_event, B_region_restricted, C1_region_opposite_same_event, C2_gene_multi_event_mixed, D_unclassified) and builds a gene summary.
     """
-    # Only consider significant events for deciding categories A, B, C
+    # Only consider significant events for deciding categories A1, A1b, B, C1, C2
     # Technical/supplemental logic happens globally
     sig_df = df[df["FDR_significant"] == True].copy()
     
@@ -136,8 +136,6 @@ def categorize_genes(df):
             
         regions = set(sig_group["region"].unique())
         n_regions = len(regions)
-        
-        category = "None"
         
         if tech_flag or (n_strict == 0 and n_sashimi == 0) or sig_group.empty:
             category = "D_unclassified"

@@ -14,7 +14,7 @@ Verify whether the specific exons identified in our "Core 6" mouse candidates ar
 3. **Myo9b** (A3SS, RI, SE) - A1b
 4. **Bcl2l11** (RI) - C1
 5. **Unc13b** (SE) - C2_gene_multi_event_mixed
-6. **Neil2** - B (largest effect size, |ΔΨ| = 0.460)
+6. **Neil2** (SE) - B (largest effect size, |ΔΨ| = 0.460)
 
 ## Workflow
 
